@@ -15,7 +15,7 @@ pipeline {
         }
         stage('Deploy k8s') {
             steps{
-              sshagent(['k8s-jenkins'])	{
+              sshagent(['k8s'])	{
 					        sh 'scp -o StrictHostKeyChecking=no deployment.yaml ubuntu@188.120.228.224:/repo'
 									script{
 						        try{
