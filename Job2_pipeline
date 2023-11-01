@@ -1,0 +1,34 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps{
+                git branch: 'main',
+                    url: 'https://github.com/gh9ew3/springboot-hello.git'    
+            }
+        }
+        stage('Build docker image') {
+            steps{
+                sh 'docker build -t gh9ew3/springboot:v2 .'
+            }
+        }
+        stage('Deploy k8s') {
+            steps{
+              sshagent(['k8s-jenkins'])	{
+					        sh 'scp -o StrictHostKeyChecking=no deployment.yaml ubuntu@188.120.228.224:/repo'
+									script{
+						        try{
+							        sh 'ssh ubuntu@188.120.228.224 kubectl apply -f .'
+
+							      }catch(error)	{
+                       sh 'ssh ubuntu@188.120.228.224 kubectl create -f .'
+							       }
+					        }
+				       }
+			       }
+		     }
+    
+        
+    }
+}
