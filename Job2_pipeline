@@ -16,19 +16,16 @@ pipeline {
         stage('Deploy k8s') {
             steps{
               sshagent(['k8s'])	{
-					        sh 'scp -o StrictHostKeyChecking=no deployment.yaml ubuntu@188.120.228.224:/repo'
-									script{
-						        try{
-							        sh 'ssh ubuntu@188.120.228.224 kubectl apply -f .'
-
-							      }catch(error)	{
-                       sh 'ssh ubuntu@188.120.228.224 kubectl create -f .'
-							       }
-					        }
-				       }
-			       }
-		     }
-    
-        
+              sh 'scp -o StrictHostKeyChecking=no deployment.yaml ubuntu@188.120.228.224:/repo'
+              script{
+                try{
+                  sh 'ssh ubuntu@188.120.228.224 kubectl apply -f .'
+                }catch(error) {
+                  sh 'ssh ubuntu@188.120.228.224 kubectl create -f .'
+                 }
+              }
+              }
+            }
+         }
     }
 }
