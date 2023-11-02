@@ -22,7 +22,7 @@ apt install openjdk-11-jre-headless
 
 #добавляем репозиторий сервиса Jenkins
 vi /etc/apt/sources.list.d/jenkins.list
-	deb https://pkg.jenkins.io/debian-stable binary/
+	deb https://pkg.jenkins.io/debian-stable binary/ #текст файла
 
 #импортируем актуальный публичный ключ для подключения к репозиторию
 wget -q -O - https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key | sudo apt-key add -
