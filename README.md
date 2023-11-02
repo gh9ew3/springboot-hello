@@ -3,14 +3,14 @@
 В данном репозитории описано выполнение тестового задания, в котором необходимо написать Dockerfile, настроить Jenkins, создать две Job (для Docker hub и kubernetes).
 Работы были проведены на виртуальном сервере 188.120.228.224 под ОС Ubuntu 20.04 
 
-###Docker установка
+–Docker установка
 ```
 apt update
 apt install docker docker.io
 systemctl enable docker
 systemctl start docker
 ```
-###Jenkens установка
+–Jenkens установка
 ```
 #настройка разрешающих правил брандмауэра
 iptables -I INPUT -p tcp --dport 8080 -j ACCEPT
@@ -37,7 +37,7 @@ cat /var/lib/jenkins/secrets/initialAdminPassword
 
 #выбираем вариант установки плагинов — рекомендованные, создаем уз для авторизации
 ```
-###minikube
+–minikube
 ```
 #забираем последний актуальный пакет и устанавливаем его
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb
