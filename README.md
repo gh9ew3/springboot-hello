@@ -5,7 +5,7 @@
 
 ###Docker установка
 ```
-apt update(&#x1F4D7;)
+apt update
 apt install docker docker.io
 systemctl enable docker
 systemctl start docker
@@ -34,6 +34,7 @@ systemctl enable jenkins
 
 #настаиваем jenkins перейдя в браузере по url http://<IP-адрес сервера>:8080 В открывшемся окне в строку вводим код из команды
 cat /var/lib/jenkins/secrets/initialAdminPassword
+
 #выбираем вариант установки плагинов — рекомендованные, создаем уз для авторизации
 ```
 ###minikube
@@ -41,15 +42,19 @@ cat /var/lib/jenkins/secrets/initialAdminPassword
 #забираем последний актуальный пакет и устанавливаем его
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb
 sudo dpkg -i minikube_latest_amd64.deb
+
 #проверям версию
 minikube version
+
 #для работы так же понадобится kubectl, добавим его ключ, создадим файл с настройкой репозитория, обновим и установим пакет
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
 sudo apt update
 sudo apt install -y kubectl
+
 #проверяем версию 
 kubectl version
+
 #запускаем minikube, узнаем ip
 minikube start --force
 minikube ip
