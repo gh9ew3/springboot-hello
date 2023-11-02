@@ -5,7 +5,7 @@
 
 ###Docker установка
 ```
->apt update
+apt update(&#x1F4D7;)
 apt install docker docker.io
 systemctl enable docker
 systemctl start docker
