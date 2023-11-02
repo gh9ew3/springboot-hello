@@ -63,4 +63,5 @@ minikube ip
 В репозитории находятся файлы для сборки докеробраза форкнутого приложения (Dockerfile), два pipeline для выполнения job в Jenkens, конфиг файл для k8s (deployment.yaml)
 
 
+![image](https://github.com/gh9ew3/springboot-hello/assets/149467039/afa8409c-a7c9-4ec9-9aef-41824c1aa8ea)
 
